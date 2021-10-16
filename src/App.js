@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import GlobalStyle from "./globalStyle";
+import { ThemeProvider } from "styled-components";
+import lightTheme from "./Themes/lightTheme";
+import {CssBaseline} from "@mui/material";
+import Loading from "./Components/Loading";
+import Router from "./utils/router";
+import {useSelector} from "react-redux";
+import {loginSelector} from "./store/accountReducer/loginReducer";
 
 function App() {
+
+  const { loading } = useSelector(loginSelector);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <ThemeProvider theme={lightTheme}>
+        <GlobalStyle />
+        <CssBaseline />
+        {loading ? <Loading /> : <Router />}
+      </ThemeProvider>
   );
 }
 
 export default App;
+
