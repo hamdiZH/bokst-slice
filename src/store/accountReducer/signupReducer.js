@@ -51,3 +51,18 @@ export function promoterSignupAction (values, history) {
     }
   }
 }
+
+export function coachSignupAction (values, history) {
+  return async dispatch => {
+    dispatch(getSignupData());
+    console.log("values", values);
+    try {
+      const response = await axios.post("/api/account/signup/", values);
+      dispatch(getSignupDataSuccess(response.data, {}))
+
+      history.push("/register-successfully");
+    } catch (e) {
+      dispatch(getSignupDataFailure(e?.response?.data?.message, {}));
+    }
+  }
+}

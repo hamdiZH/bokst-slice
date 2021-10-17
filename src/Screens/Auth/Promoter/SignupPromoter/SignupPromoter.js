@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
-import { Link } from "react-router-dom";
-import { Form, Formik } from "formik";
+import {Link} from "react-router-dom";
+import {Form, Formik} from "formik";
 import LogoImage from "../../../../Assets/Images/bokst-logo.png";
 import Btn from "../../../../Components/Button/Btn";
 import Input from "../../../../Components/Input/Input";
@@ -26,15 +26,16 @@ import {useHistory} from "react-router";
 import {promoterSignupAction, signupSelector} from "../../../../store/accountReducer/signupReducer";
 import {loginSelector} from "../../../../store/accountReducer/loginReducer";
 import {SignupSchema} from "../../../../Validation/SignupSchema";
+import {SignupPromoterSchema} from "../../../../Validation/SignupPromoterSchema";
 
 const SignupPromoter = () => {
   const genderOptions = [
-    { key: "Male", value: "M" },
-    { key: "Female", value: "F" },
+    {key: "Male", value: "M"},
+    {key: "Female", value: "F"},
   ];
   const privacyOptions = [
-    { key: "Public", value: "public" },
-    { key: "Private", value: "private" },
+    {key: "Public", value: "public"},
+    {key: "Private", value: "private"},
   ];
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -43,8 +44,8 @@ const SignupPromoter = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const { isAuthenticated } = useSelector(loginSelector);
-  const { loading, hasErrors } = useSelector(signupSelector);
+  const {isAuthenticated} = useSelector(loginSelector);
+  const {loading, hasErrors} = useSelector(signupSelector);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -53,8 +54,9 @@ const SignupPromoter = () => {
   }, [isAuthenticated, history]);
 
   const handleSaveChanges = (values, history) => {
-    values.user_role="P";
-    values.promotion = "Business";
+    values.user_role = "P";
+    values.username = values.firstName.concat(values.lastName)
+    console.log("username: ", values.username)
     dispatch(promoterSignupAction(values, history))
   };
 
@@ -69,40 +71,38 @@ const SignupPromoter = () => {
             BackdropComponent={Backdrop}
         >
           <ModalLayout maxWidth={"707px"} minHeight={"365px"}>
-            <RegisterSuccessModal />
+            <RegisterSuccessModal/>
           </ModalLayout>
         </StyledModal>
 
         <MainContainer>
           <InnerSection>
-            <LogoImg src={LogoImage} alt="bokst" style={{ marginTop: "100px" }} />
+            <LogoImg src={LogoImage} alt="bokst" style={{marginTop: "100px"}}/>
             <HeadingTxt>
-              Hello promoter , fill the fields below and complete <br /> your
+              Hello promoter , fill the fields below and complete <br/> your
               registration
             </HeadingTxt>
 
             {/* Formik */}
             <Formik
                 initialValues={{
-                  first_name: "",
-                  last_name: "",
-                  username: "",
+                  firstName: "",
+                  lastName: "",
                   password: "",
-                  confirm_password: "",
                   email: "",
                   phone: "",
                   address: "",
-                  gender: "M",
+                  genderOptions: "",
                   website: "",
                   linkedin: "",
                   facebook: "",
                   instagram: "",
-                  twitter: ""
+                  twitter: "",
                 }}
                 validationSchema={SignupSchema()}
                 onSubmit={handleSaveChanges}
             >
-              {({ errors, touched }) => {
+              {({errors, touched}) => {
                 return (
                     <Form
                         style={{
@@ -118,36 +118,36 @@ const SignupPromoter = () => {
                         <ItemWrap>
                           <Input
                               type="text"
-                              name="first_name"
+                              name="firstName"
                               placeholder="John"
                               width={"332"}
                           />
-                          {errors.first_name && touched.first_name ? (
-                              <ErrorMsg>{errors.first_name}</ErrorMsg>
+                          {errors.firstName && touched.firstName ? (
+                              <ErrorMsg>{errors.firstName}</ErrorMsg>
                           ) : null}
                         </ItemWrap>
 
                         <ItemWrap>
                           <Input
                               type="text"
-                              name="last_name"
+                              name="lastName"
                               placeholder="Doe"
                               width={"362"}
                           />
-                          {errors.last_name && touched.last_name ? (
-                              <ErrorMsg>{errors.last_name}</ErrorMsg>
+                          {errors.lastName && touched.lastName ? (
+                              <ErrorMsg>{errors.lastName}</ErrorMsg>
                           ) : null}
                         </ItemWrap>
 
                         <ItemWrap>
                           <Input
-                              type="username"
-                              name="username"
-                              placeholder="username"
+                              type="password"
+                              name="password"
+                              placeholder="****"
                               width={"332"}
                           />
-                          {errors.username && touched.username ? (
-                              <ErrorMsg>{errors.username}</ErrorMsg>
+                          {errors.password && touched.password ? (
+                              <ErrorMsg>{errors.password}</ErrorMsg>
                           ) : null}
                         </ItemWrap>
 
@@ -164,59 +164,15 @@ const SignupPromoter = () => {
                         </ItemWrap>
 
                         <ItemWrap>
-                          <Input
-                              type="password"
-                              name="password"
-                              placeholder="Password"
-                              width={"332"}
-                          />
-                          {errors.password && touched.password ? (
-                              <ErrorMsg>{errors.password}</ErrorMsg>
-                          ) : null}
-                        </ItemWrap>
-
-                        <ItemWrap>
-                          <Input
-                              type="confirm_password"
-                              name="confirm_password"
-                              placeholder="Confirm Password"
-                              width={"362"}
-                          />
-                          {errors.confirm_password && touched.confirm_password ? (
-                              <ErrorMsg>{errors.confirm_password}</ErrorMsg>
-                          ) : null}
-                        </ItemWrap>
-
-
-
-                        <ItemWrap>
-
-                          {/*https://formik.org/docs/examples/radio-group*/}
-
-                          {/*<div role={useRadioGroup} aria-labelledby={"genderOptions"}>*/}
-                          {/*  <label>Gender: </label>*/}
-                          {/*  <label>*/}
-                          {/*    <Field type="radio" name="picked" value="One" />*/}
-                          {/*    Male*/}
-                          {/*  </label>*/}
-                          {/*  <label>*/}
-                          {/*    <Field type="radio" name="picked" value="Two" />*/}
-                          {/*    Female*/}
-                          {/*  </label>*/}
-                          {/*</div>*/}
-
-
                           <RadioBtn
                               label="Gender"
                               name="genderOptions"
                               options={genderOptions}
-                              value={genderOptions}
                           />
                           {errors.genderOptions && touched.genderOptions ? (
                               <ErrorMsg>{errors.genderOptions}</ErrorMsg>
                           ) : null}
                         </ItemWrap>
-
                         <ItemWrap>
                           <Input
                               type="text"
@@ -225,7 +181,7 @@ const SignupPromoter = () => {
                               width={"362"}
                           />
                         </ItemWrap>
-                        <ItemWrap style={{ marginRight: "auto" }}>
+                        <ItemWrap style={{marginRight: "auto"}}>
                           <Input
                               type="tel"
                               name="phone"
@@ -234,7 +190,7 @@ const SignupPromoter = () => {
                               width={"332"}
                           />
                         </ItemWrap>
-                        <ItemWrap />
+                        <ItemWrap/>
 
                         <ItemWrap>
                           <Input
@@ -324,6 +280,7 @@ const SignupPromoter = () => {
                           ) : null}
 
                           {hasErrors ? <ErrorMsg>{hasErrors}</ErrorMsg> : null}
+
                         </ItemWrap>
                         <ItemWrap>
                           <RadioBtn
@@ -345,7 +302,7 @@ const SignupPromoter = () => {
                           type={"submit"}
                           text={"Submit"}
                           width={"170px"}
-                          style={{ marginTop: "40px", marginBottom: "8px" }}
+                          style={{marginTop: "40px", marginBottom: "8px"}}
                       />
                     </Form>
                 );

@@ -8,7 +8,7 @@ const RadioBtn = ({ label, name, options, style, ...rest }) => {
       <RadioBtnLabel>{label}</RadioBtnLabel>
       <Field name={name} {...rest}>
         {({ field }) => {
-          console.log("Filed", field);
+          // console.log("Filed", field);
           return options.map((option) => {
             return (
               <React.Fragment key={option.key}>
