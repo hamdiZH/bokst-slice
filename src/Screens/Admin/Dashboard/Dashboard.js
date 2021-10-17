@@ -17,11 +17,11 @@ import ApexChart from "./Components/ApexChart/ApexChart";
 const Dashboard = (props) => {
   const lightTheme = useContext(ThemeContext);
   const state = useSelector((store) => store);
+
   return (
     <>
       <FlexRow style={{ width: "100%", height: "300px" }}>
         {/* <ApexChart /> */}
-        test branch
       </FlexRow>
       <FlexRow justifyContent="space-between" style={{ marginBottom: "16px" }}>
         <HeaderTitle>Latest Events</HeaderTitle>

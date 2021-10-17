@@ -3,7 +3,7 @@ import { EventCardsWrap } from "../../../Components/Layout/Layout.Style";
 import EventCard from "../../../Components/EventCard/EventCard";
 import EventImg from "../../../Assets/Images/event.png";
 
-const ClosedEvents = () => {
+const LiveEvents = () => {
   return (
     <EventCardsWrap>
       <EventCard
@@ -100,4 +100,4 @@ const ClosedEvents = () => {
   );
 };
 
-export default ClosedEvents;
+export default LiveEvents;

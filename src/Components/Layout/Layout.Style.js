@@ -111,3 +111,9 @@ export const EventCardsWrap = styled(FlexBox)`
   align-items: start;
   flex-wrap: wrap;
 `;
+
+export const ScrollContent = styled.div`
+  height: calc(100vh - 165px);
+  overflow-x: hidden;
+  overflow-y: auto;
+`;

@@ -13,6 +13,7 @@ import Cookies from "js-cookie";
 import AllEvents from "../Screens/Admin/Events/AllEvents";
 import ClosedEvents from "../Screens/Admin/Events/ClosedEvents";
 import RegisterSuccessModal from "../Screens/Auth/Promoter/SignupPromoter/Components/RegisterSuccessModal";
+
 const Router = () => {
   const user = useSelector((store) => store.login.loginDataComes.data);
 
@@ -39,7 +40,10 @@ const Router = () => {
         <Switch>
           <Route path={"/login"} exact component={Login} />
           <Route path={"/signup-promoter"} component={SignupPromoter} />
-          <Route path={"/register-successfully"} component={RegisterSuccessModal} />
+          <Route
+            path={"/register-successfully"}
+            component={RegisterSuccessModal}
+          />
           <Route path={"/signup-coach"} component={SignupCoach} />
         </Switch>
       ) : (
@@ -56,12 +60,6 @@ const Router = () => {
               component={Events}
               authorizedRoles={["F", "C"]}
             />
-            <Route
-              path={"all-events"}
-              component={AllEvents}
-              authorizedRoles={["F", "C"]}
-            />
-            <Route path={"closed-events"} component={ClosedEvents} />
           </Switch>
         </Layout>
       )}
