@@ -30,12 +30,12 @@ import {SignupPromoterSchema} from "../../../../Validation/SignupPromoterSchema"
 
 const SignupPromoter = () => {
   const genderOptions = [
-    {key: "Male", value: "M"},
-    {key: "Female", value: "F"},
+    { key: "Male", value: "M" },
+    { key: "Female", value: "F" },
   ];
   const privacyOptions = [
-    {key: "Public", value: "public"},
-    {key: "Private", value: "private"},
+    { key: "Public", value: false },
+    { key: "Private", value: true },
   ];
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -214,7 +214,7 @@ const SignupPromoter = () => {
                         <ItemWrap>
                           <RadioBtn
                               label="Privacy"
-                              name="privacyOptions"
+                              name="privacyOptionsWebsite"
                               options={privacyOptions}
                           />
                         </ItemWrap>
@@ -233,7 +233,7 @@ const SignupPromoter = () => {
                         <ItemWrap>
                           <RadioBtn
                               label="Privacy"
-                              name="privacyOptions"
+                              name="privacyOptionsLinkedIn"
                               options={privacyOptions}
                           />
                         </ItemWrap>
@@ -252,7 +252,7 @@ const SignupPromoter = () => {
                         <ItemWrap>
                           <RadioBtn
                               label="Privacy"
-                              name="privacyOptions"
+                              name="privacyOptionsFacebook"
                               options={privacyOptions}
                           />
                         </ItemWrap>
@@ -271,7 +271,7 @@ const SignupPromoter = () => {
                         <ItemWrap>
                           <RadioBtn
                               label="Privacy"
-                              name="privacyOptions"
+                              name="privacyOptionsInstagram"
                               options={privacyOptions}
                           />
                         </ItemWrap>
@@ -293,7 +293,7 @@ const SignupPromoter = () => {
                         <ItemWrap>
                           <RadioBtn
                               label="Privacy"
-                              name="privacyOptions"
+                              name="privacyOptionsTwitter"
                               options={privacyOptions}
                           />
                         </ItemWrap>

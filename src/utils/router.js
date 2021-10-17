@@ -2,17 +2,16 @@ import { useSelector } from "react-redux";
 import { Component } from "react";
 import { Redirect, BrowserRouter } from "react-router-dom";
 import { Route, Switch } from "react-router";
-
 import Login from "../Screens/Auth/Login/Login";
 import Dashboard from "../Screens/Admin/Dashboard/Dashboard";
 import Events from "../Screens/Admin/Events/Events";
 import SignupPromoter from "../Screens/Auth/Promoter/SignupPromoter/SignupPromoter";
-import SignupCoach from "../Screens/Auth/Coach/SignupCoach/SignupCoach";
 import Layout from "../Components/Layout/Layout";
 import Cookies from "js-cookie";
 import AllEvents from "../Screens/Admin/Events/AllEvents";
 import ClosedEvents from "../Screens/Admin/Events/ClosedEvents";
 import RegisterSuccessModal from "../Screens/Auth/Promoter/SignupPromoter/Components/RegisterSuccessModal";
+import SignupCoach from "../Screens/Auth/Coach/SignupCoach/SignupCoach";
 const Router = () => {
   const user = useSelector((store) => store.login.loginDataComes.data);
 

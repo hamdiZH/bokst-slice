@@ -34,7 +34,7 @@ const FormCoach = () => {
         <ItemWrap>
           <Input
             type="text"
-            name="first_name"
+            name="firstName"
             placeholder="John"
             width={"332"}
           />
@@ -162,8 +162,8 @@ const FormCoach = () => {
         <ItemWrap>
           <Input
             type="text"
-            name="insta"
-            placeholder="insta Link"
+            name="instagramLink"
+            placeholder="Instagram Link"
             width={"332"}
           />
         </ItemWrap>
