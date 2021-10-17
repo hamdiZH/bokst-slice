@@ -30,7 +30,6 @@ import {
 } from "../../../../store/accountReducer/signupReducer";
 import { loginSelector } from "../../../../store/accountReducer/loginReducer";
 import { SignupSchema } from "../../../../Validation/SignupSchema";
-import { SignupPromoterSchema } from "../../../../Validation/SignupPromoterSchema";
 
 const SignupPromoter = () => {
   const genderOptions = [
