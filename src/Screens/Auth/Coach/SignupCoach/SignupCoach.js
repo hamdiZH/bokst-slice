@@ -39,8 +39,8 @@ const SignupCoach = () => {
     { key: "Female", value: "female" },
   ];
   const privacyOptions = [
-    { key: "Public", value: "F" },
-    { key: "Private", value: "T" },
+    { key: "Public", value: false },
+    { key: "Private", value: true },
   ];
   const disciplineOptions = [
     { key: "Select your disciplines", value: "" },

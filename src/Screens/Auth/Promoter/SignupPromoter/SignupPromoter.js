@@ -38,8 +38,8 @@ const SignupPromoter = () => {
     { key: "Female", value: "F" },
   ];
   const privacyOptions = [
-    { key: "Public", value: "F" },
-    { key: "Private", value: "T" },
+    { key: "Public", value: false },
+    { key: "Private", value: true },
   ];
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
