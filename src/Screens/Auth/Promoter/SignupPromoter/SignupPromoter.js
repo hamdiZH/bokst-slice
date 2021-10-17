@@ -55,7 +55,9 @@ const SignupPromoter = () => {
 
   const handleSaveChanges = (values, history) => {
     values.user_role = "P";
-    values.username = values.firstName.concat(values.lastName)
+    values.confirm_password = values.password
+    values.username = values.first_name.concat(values.last_name)
+    values.gender = "M";
     console.log("username: ", values.username)
     dispatch(promoterSignupAction(values, history))
   };
@@ -86,18 +88,24 @@ const SignupPromoter = () => {
             {/* Formik */}
             <Formik
                 initialValues={{
-                  firstName: "",
-                  lastName: "",
+                  first_name: "",
+                  last_name: "",
                   password: "",
                   email: "",
                   phone: "",
                   address: "",
-                  genderOptions: "",
+                  genderOptions: "M",
                   website: "",
                   linkedin: "",
                   facebook: "",
-                  instagram: "",
+                  insta: "",
                   twitter: "",
+                  privacy: {
+                    facebook: true,
+                    twitter: true,
+                    linkedin: true,
+                    website: true,
+                  },
                 }}
                 validationSchema={SignupSchema()}
                 onSubmit={handleSaveChanges}
@@ -118,24 +126,24 @@ const SignupPromoter = () => {
                         <ItemWrap>
                           <Input
                               type="text"
-                              name="firstName"
+                              name="first_name"
                               placeholder="John"
                               width={"332"}
                           />
-                          {errors.firstName && touched.firstName ? (
-                              <ErrorMsg>{errors.firstName}</ErrorMsg>
+                          {errors.first_name && touched.first_name ? (
+                              <ErrorMsg>{errors.first_name}</ErrorMsg>
                           ) : null}
                         </ItemWrap>
 
                         <ItemWrap>
                           <Input
                               type="text"
-                              name="lastName"
+                              name="last_name"
                               placeholder="Doe"
                               width={"362"}
                           />
-                          {errors.lastName && touched.lastName ? (
-                              <ErrorMsg>{errors.lastName}</ErrorMsg>
+                          {errors.last_name && touched.last_name ? (
+                              <ErrorMsg>{errors.last_name}</ErrorMsg>
                           ) : null}
                         </ItemWrap>
 
@@ -252,12 +260,12 @@ const SignupPromoter = () => {
                         <ItemWrap>
                           <Input
                               type="text"
-                              name="instagram"
+                              name="insta"
                               placeholder="Instagram Link"
                               width={"332"}
                           />
-                          {errors.instagram && touched.instagram ? (
-                              <ErrorMsg>{errors.instagram}</ErrorMsg>
+                          {errors.insta && touched.insta ? (
+                              <ErrorMsg>{errors.insta}</ErrorMsg>
                           ) : null}
                         </ItemWrap>
                         <ItemWrap>

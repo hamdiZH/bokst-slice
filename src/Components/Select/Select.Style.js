@@ -21,6 +21,7 @@ export const StyledSelect = styled(Select)`
 `;
 
 export const StyledMenuItem = styled(MenuItem)`
+  width: 362px;
   &:last-child {
     border-bottom: 0;
   }

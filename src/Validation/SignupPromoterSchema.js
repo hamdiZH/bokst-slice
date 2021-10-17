@@ -2,8 +2,8 @@ import * as yup from "yup";
 
 export const SignupPromoterSchema = () => {
   return yup.object({
-    firstName: yup.string().required("Please enter your Name"),
-    lastName: yup.string().required("Please enter your last name"),
+    first_name: yup.string().required("Please enter your Name"),
+    last_name: yup.string().required("Please enter your last name"),
     email: yup
         .string()
         .email("Please enter a valid email")
@@ -28,7 +28,7 @@ export const SignupPromoterSchema = () => {
             /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
             "Enter correct url!"
         ),
-    instagram: yup
+    insta: yup
         .string()
         .matches(
             /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,

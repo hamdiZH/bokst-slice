@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Formik, Form } from "formik";
 
 import Input from "../../../../../Components/Input/Input";
@@ -6,6 +6,9 @@ import RadioBtn from "../../../../../Components/RadioBtn/RadioBtn";
 import SelectOptions from "../../../../../Components/Select/SelectOptions";
 import Btn from "../../../../../Components/Button/Btn";
 import { ModalTitle } from "../../../../../App.Style";
+import {useDispatch, useSelector} from "react-redux";
+import {useHistory} from "react-router";
+import {getDisciplinesAction, getDisciplinesSelector} from "../../../../../store/accountReducer/getDisciplinesReducer";
 const DisciplineEditModel = () => {
   const privacyOptions = [
     { key: "Public", value: "public" },
@@ -15,12 +18,38 @@ const DisciplineEditModel = () => {
     { key: "Yes", value: "yes" },
     { key: "No", value: "no" },
   ];
-  const disciplineOptions = [
-    { key: "Select your disciplines", value: "" },
+
+  const classOptions = [
+    { key: "Select your class", value: "" },
     { key: "Judo", value: "judo" },
     { key: "Karate", value: "karate" },
     { key: "Kong fu", value: "kongfu" },
   ];
+
+  const gymOptions = [
+    { key: "Select your gym", value: "" },
+    { key: "Judo", value: "judo" },
+    { key: "Karate", value: "karate" },
+    { key: "Kong fu", value: "kongfu" },
+  ];
+
+  const associationOptions = [
+    { key: "Select your association", value: "" },
+    { key: "TAB Trans America Boxing", value: "TAB Trans America Boxing" },
+    { key: "IAB International Association of Boxing International Amateur Boxing", value: "IAB International Association of Boxing International Amateur Boxing" },
+    { key: "WBU World Boxing Union", value: "WBU World Boxing Union" },
+  ];
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const { disciplinesDataComes, loading, hasError } = useSelector(getDisciplinesSelector);
+
+  useEffect(() => {
+    dispatch(getDisciplinesAction())
+  }, [dispatch]);
+
+
   const handleSaveChanges = (value) => {
     console.log(value);
   };
@@ -52,6 +81,9 @@ const DisciplineEditModel = () => {
                 flexDirection: "column",
               }}
             >
+              {/*{disciplinesDataComes.data.map((item) => {*/}
+              {/*  console.log(item.name)*/}
+              {/*})}*/}
               <Input
                 type="text"
                 name="startYear"
@@ -69,13 +101,13 @@ const DisciplineEditModel = () => {
                 }}
               />
               <SelectOptions
-                name={disciplineOptions}
-                options={disciplineOptions}
+                name={classOptions}
+                options={classOptions}
                 width={"362px"}
               />
               <SelectOptions
-                name={disciplineOptions}
-                options={disciplineOptions}
+                name={gymOptions}
+                options={gymOptions}
                 width={"362px"}
                 style={{
                   marginBottom: "18px",
@@ -83,8 +115,8 @@ const DisciplineEditModel = () => {
                 }}
               />
               <SelectOptions
-                name={disciplineOptions}
-                options={disciplineOptions}
+                name={associationOptions}
+                options={associationOptions}
                 width={"362px"}
               />
               <RadioBtn

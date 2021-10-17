@@ -1,10 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
 import axios from "../../axios";
-import {
-  getCurrentProfileData,
-  getCurrentProfileDataFailure,
-  getCurrentProfileDataSuccess
-} from "./currentProfileReducer";
 
 export const initialState = {
   loading: false,

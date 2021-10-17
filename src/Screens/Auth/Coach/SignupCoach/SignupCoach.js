@@ -61,7 +61,7 @@ const SignupCoach = () => {
 
   const handleSaveChanges = (values, history) => {
     values.user_role = "C";
-    values.username = values.firstName.concat(values.lastName)
+    values.username = values.first_name.concat(values.last_name)
     console.log("username: ", values.username)
     dispatch(coachSignupAction(values, history))
   };
@@ -97,8 +97,8 @@ const SignupCoach = () => {
             {/* Formik */}
             <Formik
                 initialValues={{
-                  firstName: "",
-                  lastName: "",
+                  first_name: "",
+                  last_name: "",
                   password: "",
                   email: "",
                   phone: "",
@@ -106,7 +106,7 @@ const SignupCoach = () => {
                   genderOptions: "",
                   disciplineOptions: "",
                   facebook: "",
-                  instagram: "",
+                  insta: "",
                   twitter: "",
                 }}
                 validationSchema={SignupSchema()}
@@ -128,12 +128,12 @@ const SignupCoach = () => {
                         <ItemWrap>
                           <Input
                               type="text"
-                              name="firstName"
+                              name="first_name"
                               placeholder="John"
                               width={"332"}
                           />
-                          {errors.firstName && touched.firstName ? (
-                              <ErrorMsg>{errors.firstName}</ErrorMsg>
+                          {errors.first_name && touched.first_name ? (
+                              <ErrorMsg>{errors.first_name}</ErrorMsg>
                           ) : null}
                         </ItemWrap>
                         <ItemWrap>
@@ -280,12 +280,12 @@ const SignupCoach = () => {
                         <ItemWrap>
                           <Input
                               type="text"
-                              name="instagram"
+                              name="insta"
                               placeholder="Instagram Link"
                               width={"332"}
                           />
-                          {errors.instagram && touched.instagram ? (
-                              <ErrorMsg>{errors.instagram}</ErrorMsg>
+                          {errors.insta && touched.insta ? (
+                              <ErrorMsg>{errors.insta}</ErrorMsg>
                           ) : null}
                         </ItemWrap>
                         <ItemWrap>
