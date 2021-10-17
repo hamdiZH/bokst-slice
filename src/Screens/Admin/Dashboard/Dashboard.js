@@ -20,7 +20,8 @@ const Dashboard = (props) => {
   return (
     <>
       <FlexRow style={{ width: "100%", height: "300px" }}>
-        <ApexChart />
+        {/* <ApexChart /> */}
+        test branch
       </FlexRow>
       <FlexRow justifyContent="space-between" style={{ marginBottom: "16px" }}>
         <HeaderTitle>Latest Events</HeaderTitle>
